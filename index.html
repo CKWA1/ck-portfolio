@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyubahiro Kevin — Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="nav-container">
+        <a href="#" class="brand-logo">
+          <svg
+            class="logo-svg"
+            width="36"
+            height="36"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="40"
+              height="40"
+              rx="10"
+              fill="#0F0F17"
+              stroke="#1E1E2D"
+              stroke-width="1.5"
+            />
+            <path
+              d="M11 14L7 20L11 26"
+              stroke="#9333EA"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22 15H17C15.8954 15 15 15.8954 15 17V23C15 24.1046 15.8954 25 17 25H22"
+              stroke="#FFFFFF"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M26 15V25M32 15L26 20L32 25"
+              stroke="#9333EA"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="logo-text">CYUBAHIRO</span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#journey">Journey</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#projects" class="btn-cta">
+          <span>View Work</span>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+
+        <button id="mobile-menu-btn" aria-label="Toggle Navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-text">
+          <div class="badge">
+            <span class="pulse-dot"></span>
+            <span>Computer Science Student & Builder</span>
+          </div>
+
+          <h1>
+            Hi, I'm <span class="text-gradient">Kevin</span> — turning ideas
+            into real digital experiences.
+          </h1>
+
+          <p class="hero-description">
+            I build websites, applications, and digital solutions while
+            continuously exploring software development, AI, cybersecurity, and
+            emerging technology.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <i data-lucide="code"></i>
+              <span>View My Work</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <i data-lucide="sparkles"></i>
+              <span>Let's Connect</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">2+</span>
+              <span class="stat-label">Production Apps</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">6+</span>
+              <span class="stat-label">Languages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Active Curiosity</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="canvas-card profile-card">
+            <canvas id="ck-canvas"></canvas>
+
+            <div class="profile-image-wrapper">
+              <img
+                src="assets/profile.jpg"
+                alt="Cyubahiro Kevin"
+                class="profile-img"
+              />
+            </div>
+
+            <div class="canvas-tag">
+              <span class="active-dot"></span>
+              <span>CYUBAHIRO // ACTIVE_BUILDER_NODE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// IDENTITY</span>
+          <h2>From Learning to Building</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card main-story">
+            <h3>Driven by curiosity, grounded in code.</h3>
+            <p>
+              I am a Computer Science student and developer who believes the
+              best way to master technology is by taking ideas out of textbooks
+              and turning them into functional digital products.
+            </p>
+            <p>
+              Rather than relying solely on theoretical exercises, I build real
+              websites, database systems, and software utilities. My goal is to
+              create software that solves concrete problems while continuously
+              expanding my capabilities across web engineering, systems, AI, and
+              security.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <i data-lucide="blocks"></i>
+                <div>
+                  <strong>Hands-on Mindset</strong>
+                  <span
+                    >Every concept I learn gets tested in a practical
+                    application.</span
+                  >
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i data-lucide="cpu"></i>
+                <div>
+                  <strong>Multi-Language Foundation</strong>
+                  <span
+                    >Working seamlessly across Python, Web stacks, C++, and
+                    Java.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-card learning-box">
+            <div class="learning-header">
+              <i data-lucide="compass" class="spin-icon"></i>
+              <h3>Currently Exploring</h3>
+            </div>
+            <p class="learning-desc">
+              Technologies I am actively studying and experimenting with right
+              now:
+            </p>
+            <ul class="learning-list">
+              <li>
+                <span class="dot-active"></span> Python Systems & Automation
+              </li>
+              <li>
+                <span class="dot-active"></span> REST APIs & SDK Integrations
+              </li>
+              <li>
+                <span class="dot-active"></span> AI Fundamentals & Machine
+                Learning
+              </li>
+              <li>
+                <span class="dot-active"></span> Cybersecurity & Network Defense
+              </li>
+              <li>
+                <span class="dot-active"></span> Advanced Full-Stack
+                Architecture
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="section bg-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// PROGRESSION</span>
+          <h2>Developer Journey</h2>
+          <p class="section-sub">
+            A continuous cycle of studying fundamentals, launching real tools,
+            and reaching for higher complexity.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker">1</div>
+            <div class="timeline-content">
+              <span class="timeline-phase">PHASE 01</span>
+              <h3>Programming Fundamentals</h3>
+              <p>
+                Building logic, algorithmic thinking, and understanding
+                object-oriented programming concepts using Python, C++, and VB6.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">2</div>
+            <div class="timeline-content">
+              <span class="timeline-phase">PHASE 02</span>
+              <h3>Web Development Core</h3>
+              <p>
+                Mastering modern HTML5, CSS layout systems (Grid/Flexbox), and
+                dynamic JavaScript to build responsive web interfaces.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">3</div>
+            <div class="timeline-content">
+              <span class="timeline-phase">PHASE 03</span>
+              <h3>Production Projects</h3>
+              <p>
+                Architecting full business applications like
+                <strong>INZU ART</strong> (Gallery & Booking) and
+                <strong>Business Manager</strong> (Sales, Stock, and Expenses).
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <span class="timeline-phase">PHASE 04</span>
+              <h3>APIs, Cloud & Database</h3>
+              <p>
+                Integrating third-party SDKs, handling authentication, dynamic
+                database schemas with Firebase/Supabase, and cloud deployments.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item active-phase">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-content">
+              <span class="timeline-phase">CURRENT FOCUS</span>
+              <h3>AI, Security & Future Engineering</h3>
+              <p>
+                Diving into artificial intelligence concepts, cybersecurity
+                methodologies, and software automation pipelines.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// TOOLKIT</span>
+          <h2>Technical Capabilities</h2>
+          <p class="section-sub">
+            An honest snapshot of tools I use, categorized by current
+            familiarity rather than arbitrary percentages.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i data-lucide="code-2" class="icon-cyan"></i>
+              <h3>Programming</h3>
+            </div>
+            <div class="pill-group">
+              <span class="pill comfortable"
+                >Python <small>(Comfortable)</small></span
+              >
+              <span class="pill comfortable"
+                >JavaScript <small>(Comfortable)</small></span
+              >
+              <span class="pill developing"
+                >Java <small>(Developing)</small></span
+              >
+              <span class="pill developing"
+                >C++ <small>(Developing)</small></span
+              >
+              <span class="pill developing"
+                >VB6 <small>(Developing)</small></span
+              >
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i data-lucide="globe" class="icon-indigo"></i>
+              <h3>Web & Data</h3>
+            </div>
+            <div class="pill-group">
+              <span class="pill comfortable"
+                >HTML5 / CSS3 <small>(Comfortable)</small></span
+              >
+              <span class="pill comfortable"
+                >DOM Manipulation <small>(Comfortable)</small></span
+              >
+              <span class="pill developing"
+                >APIs & SDKs <small>(Developing)</small></span
+              >
+              <span class="pill developing"
+                >Firebase <small>(Developing)</small></span
+              >
+              <span class="pill developing"
+                >Supabase <small>(Developing)</small></span
+              >
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <i data-lucide="wrench" class="icon-teal"></i>
+              <h3>Tools & Workflow</h3>
+            </div>
+            <div class="pill-group">
+              <span class="pill comfortable"
+                >Git & GitHub <small>(Comfortable)</small></span
+              >
+              <span class="pill comfortable"
+                >VS Code <small>(Comfortable)</small></span
+              >
+              <span class="pill developing"
+                >Database Design <small>(Developing)</small></span
+              >
+              <span class="pill exploring"
+                >Linux Basics <small>(Exploring)</small></span
+              >
+            </div>
+          </div>
+
+          <div class="skill-card highlight-card">
+            <div class="skill-card-header">
+              <i data-lucide="sparkles" class="icon-amber"></i>
+              <h3>Emerging Tech</h3>
+            </div>
+            <div class="pill-group">
+              <span class="pill exploring"
+                >Artificial Intelligence <small>(Exploring)</small></span
+              >
+              <span class="pill exploring"
+                >Cybersecurity <small>(Exploring)</small></span
+              >
+              <span class="pill exploring"
+                >Automation <small>(Exploring)</small></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section bg-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// PORTFOLIO</span>
+          <h2>Featured Projects</h2>
+          <p class="section-sub">
+            Practical digital solutions built to solve real operational,
+            management, and creative needs.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: INZU ART with Cover Image -->
+          <article class="dev-card">
+            <div class="dev-card-banner image-banner">
+              <img
+                src="assets/inzuart-cover.png"
+                alt="INZU ART Preview"
+                class="banner-img"
+              />
+              <span class="banner-badge">WEB PORTAL</span>
+            </div>
+            <div class="dev-card-body">
+              <div>
+                <h3 class="dev-card-title">INZU ART Platform</h3>
+                <p class="dev-card-desc">
+                  Full responsive decoration company portal with event gallery
+                  filtering, booking forms, and a custom Firebase admin
+                  dashboard.
+                </p>
+              </div>
+              <div class="dev-card-footer">
+                <span class="dev-tag">Production</span>
+                <a
+                  href="https://inzuart.netlify.app/"
+                  target="_blank"
+                  class="dev-btn-link"
+                  >View Project <i data-lucide="arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Business Manager -->
+          <article class="dev-card">
+            <div
+              class="dev-card-banner"
+              style="background: linear-gradient(135deg, #064e3b, #0f172a)"
+            >
+              <span class="banner-title">BUSINESS MGR</span>
+              <span class="banner-badge">SYSTEM</span>
+            </div>
+            <div class="dev-card-body">
+              <div>
+                <h3 class="dev-card-title">Business Manager</h3>
+                <p class="dev-card-desc">
+                  Commercial management software tracking sales, inventory,
+                  stock levels, expenses, and automated statistical reporting.
+                </p>
+              </div>
+              <div class="dev-card-footer">
+                <span class="dev-tag">Production</span>
+                <a href="#" class="dev-btn-link"
+                  >View Project <i data-lucide="arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: CYUBAHIRO Labs -->
+          <article class="dev-card">
+            <div
+              class="dev-card-banner"
+              style="background: linear-gradient(135deg, #31104b, #0284c7)"
+            >
+              <span class="banner-title">CYUBAHIRO LABS</span>
+              <span class="banner-badge">EXPERIMENTAL</span>
+            </div>
+            <div class="dev-card-body">
+              <div>
+                <h3 class="dev-card-title">AI & Automation Suite</h3>
+                <p class="dev-card-desc">
+                  Collection of Python automation tools, REST API integrations,
+                  and experimental scripts built during active learning.
+                </p>
+              </div>
+              <div class="dev-card-footer">
+                <span class="dev-tag" style="background: #0284c7"
+                  >In Progress</span
+                >
+                <a href="#" class="dev-btn-link"
+                  >View Code <i data-lucide="arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">// CREDENTIALS</span>
+          <h2>Verified Certificates</h2>
+          <p class="section-sub">
+            Formal recognitions and course completions supporting my continuous
+            technical development.
+          </p>
+        </div>
+
+        <div class="certificates-grid" id="certificates-container">
+          <article class="dev-card">
+            <div
+              class="dev-card-banner"
+              style="background: linear-gradient(135deg, #18181b, #3f3f46)"
+            >
+              <span class="banner-title">ENGINEERING</span>
+              <span class="banner-badge">VERIFIED</span>
+            </div>
+            <div class="dev-card-body">
+              <div>
+                <h3 class="dev-card-title">
+                  Software Engineering Fundamentals
+                </h3>
+                <p class="dev-card-desc">
+                  Demonstrated proficiency in core computer science, software
+                  design principles, algorithms, and web development stacks.
+                </p>
+              </div>
+              <div class="dev-card-footer">
+                <span class="dev-tag" style="background: #2563eb"
+                  >Certified</span
+                >
+                <a href="#" class="dev-btn-link"
+                  >Verify Credential <i data-lucide="external-link"></i
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section bg-alt">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info">
+            <span class="section-tag">// GET IN TOUCH</span>
+            <h2>Have an idea worth building?</h2>
+            <p>
+              I'm always interested in learning, building, collaborating, and
+              exploring new engineering concepts. Whether you have a project in
+              mind, a business solution to automate, or just want to connect,
+              send a message!
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-item">
+                <i data-lucide="mail"></i>
+                <div>
+                  <strong>Direct Email</strong>
+                  <a href="mailto:cyubahirokevin01@gmail.com"
+                    >cyubahirokevin01@gmail.com</a
+                  >
+                </div>
+              </div>
+              <div class="contact-item">
+                <i data-lucide="github"></i>
+                <div>
+                  <strong>Code & Repositories</strong>
+                  <a href="https://github.com/CKWA1" target="_blank"
+                    >github.com/cyubahiro</a
+                  >
+                </div>
+              </div>
+              <div class="contact-item">
+                <i data-lucide="linkedin"></i>
+                <div>
+                  <strong>Professional Network</strong>
+                  <a
+                    href="https://www.linkedin.com/in/cyubahiro-kevin-973190373/"
+                    target="_blank"
+                    >linkedin.com/in/cyubahiro-kevin</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="CYUBAHIRO Kevin"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="ceekay@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Tell me about your project or idea..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary btn-block">
+              <i data-lucide="send"></i>
+              <span>Send Message</span>
+            </button>
+
+            <p id="form-status" class="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-socials">
+          <a
+            href="https://www.instagram.com/cyubahiro____/?__pwa=1#"
+            target="_blank"
+            aria-label="Instagram"
+            class="social-box"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a
+            href="https://github.com/CKWA1"
+            target="_blank"
+            aria-label="GitHub"
+            class="social-box"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+              ></path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/cyubahiro-kevin-973190373/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="social-box"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a
+            href="https://x.com/ckhim2050"
+            target="_blank"
+            aria-label="Twitter"
+            class="social-box"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/@CyubahiroKevin-w1h"
+            target="_blank"
+            aria-label="YouTube"
+            class="social-box"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.56 49.56 0 0 1-16.2 0A2 2 0 0 1 2.5 17"
+              ></path>
+              <polygon points="10 15 15 12 10 9 10 15"></polygon>
+            </svg>
+          </a>
+        </div>
+
+        <p class="copyright-text">
+          &copy; 2026 Cyubahiro Kevin. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

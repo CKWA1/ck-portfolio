@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Cyubahiro Kevin</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+      .admin-layout {
+        display: flex;
+        min-height: 100vh;
+        padding-top: 5rem;
+      }
+      .admin-sidebar {
+        width: 260px;
+        background: var(--bg-card);
+        border-right: 1px solid var(--border-color);
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .admin-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        list-style: none;
+      }
+      .admin-menu-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .admin-menu-item.active,
+      .admin-menu-item:hover {
+        background: rgba(147, 51, 234, 0.15);
+        color: var(--text-main);
+        border: 1px solid rgba(147, 51, 234, 0.3);
+      }
+      .admin-main {
+        flex-grow: 1;
+        padding: 2.5rem;
+        background: var(--bg-main);
+      }
+      .admin-section {
+        display: none;
+      }
+      .admin-section.active-section {
+        display: block;
+      }
+      .data-table-wrapper {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-top: 1rem;
+      }
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+      .data-table th,
+      .data-table td {
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 0.9rem;
+      }
+      .data-table th {
+        background: #0d0d13;
+        font-family: var(--font-mono);
+        color: var(--text-sub);
+      }
+      .data-table td {
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Nav -->
+    <header id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+          <svg
+            class="logo-svg"
+            width="36"
+            height="36"
+            viewBox="0 0 40 40"
+            fill="none"
+          >
+            <rect
+              width="40"
+              height="40"
+              rx="10"
+              fill="#0F0F17"
+              stroke="#1E1E2D"
+              stroke-width="1.5"
+            />
+            <path
+              d="M11 14L7 20L11 26"
+              stroke="#9333EA"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M22 15H17C15.8954 15 15 15.8954 15 17V23C15 24.1046 15.8954 25 17 25H22"
+              stroke="#FFFFFF"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M26 15V25M32 15L26 20L32 25"
+              stroke="#9333EA"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="logo-text">DASHBOARD</span>
+        </a>
+        <a href="index.html" class="btn-cta">
+          <i data-lucide="globe"></i>
+          <span>View Site</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="admin-sidebar">
+        <ul class="admin-menu">
+          <li>
+            <a
+              class="admin-menu-item active"
+              onclick="switchTab('overview', this)"
+            >
+              <i data-lucide="layout-dashboard"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="admin-menu-item"
+              onclick="switchTab('projects-panel', this)"
+            >
+              <i data-lucide="folder-kanban"></i>
+              <span>Manage Projects</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="admin-menu-item"
+              onclick="switchTab('certificates-panel', this)"
+            >
+              <i data-lucide="award"></i>
+              <span>Manage Certificates</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="admin-menu-item"
+              onclick="switchTab('messages-panel', this)"
+            >
+              <i data-lucide="inbox"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+        </ul>
+
+        <button id="logout-btn" class="btn-secondary btn-block">
+          <i data-lucide="log-out"></i>
+          <span>Sign Out</span>
+        </button>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="admin-main">
+        <!-- Tab 1: Overview -->
+        <div id="overview" class="admin-section active-section">
+          <div class="section-header">
+            <span class="section-tag">// CONTROL PANEL</span>
+            <h2>Dashboard Overview</h2>
+          </div>
+          <div
+            class="hero-stats"
+            style="border: none; padding-top: 0; margin-bottom: 2.5rem"
+          >
+            <div class="skill-card">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Total Projects</span>
+            </div>
+            <div class="skill-card">
+              <span class="stat-number">1</span>
+              <span class="stat-label">Verified Certificate</span>
+            </div>
+            <div class="skill-card">
+              <span class="stat-number" style="color: #10b981">Online</span>
+              <span class="stat-label">Database Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Projects Management (With Cover Control) -->
+        <div id="projects-panel" class="admin-section">
+          <div class="section-header">
+            <span class="section-tag">// PORTFOLIO CMS</span>
+            <h2>Add / Manage Projects</h2>
+          </div>
+          <div class="contact-card">
+            <form id="project-form" class="contact-form">
+              <div class="form-group">
+                <label>Project Title</label>
+                <input
+                  type="text"
+                  id="p-title"
+                  placeholder="e.g. INZU ART"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Badge Category</label>
+                <input
+                  type="text"
+                  id="p-badge"
+                  placeholder="e.g. WEB PORTAL"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Cover Image URL (e.g., assets/inzuart-cover.png)</label>
+                <input
+                  type="text"
+                  id="p-cover"
+                  placeholder="assets/inzuart-cover.png"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  id="p-desc"
+                  rows="3"
+                  placeholder="Describe the project..."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Live URL</label>
+                <input
+                  type="url"
+                  id="p-url"
+                  placeholder="https://..."
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-primary">
+                <i data-lucide="plus"></i>
+                <span>Save Project</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 3: Certificate Management -->
+        <div id="certificates-panel" class="admin-section">
+          <div class="section-header">
+            <span class="section-tag">// CREDENTIALS CMS</span>
+            <h2>Add / Manage Certificates</h2>
+          </div>
+          <div class="contact-card">
+            <form id="cert-form" class="contact-form">
+              <div class="form-group">
+                <label>Certificate Title</label>
+                <input
+                  type="text"
+                  id="c-title"
+                  placeholder="e.g. Software Engineering Fundamentals"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Issuer / Organization</label>
+                <input
+                  type="text"
+                  id="c-issuer"
+                  placeholder="e.g. Coursera / Tech Academy"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  id="c-desc"
+                  rows="3"
+                  placeholder="Brief details of the credential..."
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Verification URL</label>
+                <input
+                  type="url"
+                  id="c-url"
+                  placeholder="https://..."
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-primary">
+                <i data-lucide="plus"></i>
+                <span>Save Certificate</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 4: Messages Inbox -->
+        <div id="messages-panel" class="admin-section">
+          <div class="section-header">
+            <span class="section-tag">// INBOX</span>
+            <h2>Contact Submissions</h2>
+          </div>
+          <div class="data-table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Sender</th>
+                  <th>Email</th>
+                  <th>Message</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4" style="text-align: center">
+                    No messages received yet.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+<script>
+      lucide.createIcons();
+
+      // Bypass check for local testing: Automatically keeps you logged in
+      if (!localStorage.getItem("admin_authenticated")) {
+        localStorage.setItem("admin_authenticated", "true");
+      }
+
+      // Logout handler
+      document.getElementById("logout-btn").addEventListener("click", () => {
+        localStorage.removeItem("admin_authenticated");
+        localStorage.removeItem("admin_auth_time");
+        window.location.href = "admin.html";
+      });
+
+      // Tab Switching Function
+      function switchTab(tabId, element) {
+        document
+          .querySelectorAll(".admin-section")
+          .forEach((sec) => sec.classList.remove("active-section"));
+        document
+          .querySelectorAll(".admin-menu-item")
+          .forEach((item) => item.classList.remove("active"));
+
+        document.getElementById(tabId).classList.add("active-section");
+        if (element) element.classList.add("active");
+      }
+    </script>
+    </script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

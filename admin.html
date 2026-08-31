@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login — Cyubahiro Kevin</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+      .login-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 1.25rem;
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <div style="text-align: center; margin-bottom: 1.5rem">
+          <span class="section-tag">// AUTHENTICATION</span>
+          <h2>Admin Portal</h2>
+        </div>
+        <form id="login-form" class="contact-form">
+          <div class="form-group">
+            <label for="admin-email">Email</label>
+            <input
+              type="email"
+              id="admin-email"
+              placeholder="cyubahirokevin01@gmail.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="admin-password">Password</label>
+            <input
+              type="password"
+              id="admin-password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn-primary btn-block"
+            style="margin-top: 0.5rem"
+          >
+            <i data-lucide="lock"></i>
+            <span>Sign In</span>
+          </button>
+          <p
+            id="login-error"
+            class="form-status"
+            style="color: #ef4444; margin-top: 0.5rem"
+          ></p>
+        </form>
+        <div style="text-align: center; margin-top: 1.5rem">
+          <a href="index.html" class="mosh-btn-link" style="font-size: 0.85rem"
+            >&larr; Back to Portfolio</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      // Handle login redirection
+      document.getElementById("login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("admin-email").value;
+        const password = document.getElementById("admin-password").value;
+
+        // Simple auth check (update credentials as preferred)
+        if (email === "cyubahirokevin01@gmail.com" && password === "admin123") {
+          localStorage.setItem("admin_authenticated", "true");
+          window.location.href = "dashboard.html";
+        } else {
+          document.getElementById("login-error").innerText =
+            "Invalid email or password";
+        }
+      });
+    </script>
+  </body>
+</html>
